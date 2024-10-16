@@ -3,7 +3,7 @@ FROM jupyter/base-notebook
 # Install necessary packages
 USER root
 RUN apt-get update && \
-    apt-get install -y x11vnc xvfb fluxbox websockify && \
+    apt-get install -y x11vnc xvfb fluxbox websockify git && \
     rm -rf /var/lib/apt/lists/*
 
 # Install PyQt5
@@ -18,6 +18,7 @@ RUN git clone https://github.com/novnc/noVNC.git /opt/noVNC && \
 COPY start.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/start.sh
 
+# Switch back to the default non-root user
 USER ${NB_UID}
 
 # Expose necessary ports
