@@ -243,11 +243,15 @@ class QuizGame(QWidget):
         QMessageBox.information(self, 'Result', result)
 
 def main():
+    import os
+    os.environ['DISPLAY'] = ':1'  # Use the virtual display
     app = QApplication(sys.argv)
     quiz = QuizGame()
     quiz.resize(600, 400)
     quiz.show()
     sys.exit(app.exec_())
 
+
 if __name__ == '__main__':
     main()
+
